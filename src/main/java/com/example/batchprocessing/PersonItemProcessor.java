@@ -16,7 +16,9 @@ public class PersonItemProcessor implements ItemProcessor<Person, Person> {
 
 		final Person transformedPerson = new Person(firstName, lastName);
 
+		log.info("teshi 文字列を大文字に変更");
 		log.info("Converting (" + person + ") into (" + transformedPerson + ")");
+
 
 		return transformedPerson;
 	}

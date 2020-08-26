@@ -21,6 +21,8 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 	@Autowired
 	public JobCompletionNotificationListener(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+		log.info("teshi JobCompletionNotificationListenerインスタンス化");
+
 	}
 
 	@Override
@@ -33,6 +35,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 					rs.getString(1),
 					rs.getString(2))
 			).forEach(person -> log.info("Found <" + person + "> in the database."));
+			log.info("teshi 処理完了");
 		}
 	}
 }

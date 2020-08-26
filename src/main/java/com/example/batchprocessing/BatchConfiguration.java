@@ -2,6 +2,8 @@ package com.example.batchprocessing;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -21,21 +23,21 @@ import org.springframework.core.io.ClassPathResource;
 
 
 
-// tag::setup[]
 @Configuration
 @EnableBatchProcessing
 public class BatchConfiguration {
+
+	private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
 
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
 
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
-	// end::setup[]
 
-	// tag::readerwriterprocessor[]
 	@Bean
 	public FlatFileItemReader<Person> reader() {
+		log.info("teshi データ解析してPesonに変換");
 		return new FlatFileItemReaderBuilder<Person>()
 			.name("personItemReader")
 			.resource(new ClassPathResource("sample-data.csv"))
@@ -49,22 +51,23 @@ public class BatchConfiguration {
 
 	@Bean
 	public PersonItemProcessor processor() {
+		log.info("teshi 文字を大文字に変更する処理");
 		return new PersonItemProcessor();
 	}
 
 	@Bean
 	public JdbcBatchItemWriter<Person> writer(DataSource dataSource) {
+		log.info("teshi SQLデータベースに書き込む");
 		return new JdbcBatchItemWriterBuilder<Person>()
 			.itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
 			.sql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)")
 			.dataSource(dataSource)
 			.build();
 	}
-	// end::readerwriterprocessor[]
 
-	// tag::jobstep[]
 	@Bean
 	public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
+		log.info("teshi JOBスタート");
 		return jobBuilderFactory.get("importUserJob")
 			.incrementer(new RunIdIncrementer())
 			.listener(listener)
@@ -75,6 +78,7 @@ public class BatchConfiguration {
 
 	@Bean
 	public Step step1(JdbcBatchItemWriter<Person> writer) {
+		log.info("㋢ STEPスタート");
 		return stepBuilderFactory.get("step1")
 			.<Person, Person> chunk(10)
 			.reader(reader())
@@ -82,5 +86,4 @@ public class BatchConfiguration {
 			.writer(writer)
 			.build();
 	}
-	// end::jobstep[]
 }
