@@ -1,29 +1,5 @@
-# Operating System Files
-
-*.DS_Store
-Thumbs.db
-
-#Bild Files #
-
-bin
-target
-build/
+# Ignore Gradle project-specific cache directory
 .gradle
 
-#Eclipse Project Files #
-
-.classpath
-.projact
-.settings
-
-# ItelliJ IDEA Files #
-
-*.iml
-*.ipr
-*.iws
-*.idea
-
-# Spring Bootstrap artifacts
-
-dependecy-reduced-pom.xml
-READE.html
+# Ignore Gradle build output directory
+build
