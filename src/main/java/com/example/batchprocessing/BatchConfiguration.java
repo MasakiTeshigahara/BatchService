@@ -37,7 +37,7 @@ public class BatchConfiguration {
 
 	@Bean
 	public FlatFileItemReader<Person> reader() {
-		log.info("teshi データ解析してPesonに変換");
+		log.info("teshi:Data analysis and conversion to Peson");
 		return new FlatFileItemReaderBuilder<Person>()
 			.name("personItemReader")
 			.resource(new ClassPathResource("sample-data.csv"))
@@ -51,13 +51,13 @@ public class BatchConfiguration {
 
 	@Bean
 	public PersonItemProcessor processor() {
-		log.info("teshi 文字を大文字に変更する処理");
+		log.info("teshi:The process of changing characters to uppercase");
 		return new PersonItemProcessor();
 	}
 
 	@Bean
 	public JdbcBatchItemWriter<Person> writer(DataSource dataSource) {
-		log.info("teshi SQLデータベースに書き込む");
+		log.info("teshi:Write to SQL database");
 		return new JdbcBatchItemWriterBuilder<Person>()
 			.itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
 			.sql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)")
@@ -78,7 +78,7 @@ public class BatchConfiguration {
 
 	@Bean
 	public Step step1(JdbcBatchItemWriter<Person> writer) {
-		log.info("㋢ STEPスタート");
+		log.info("teshi:STEP start");
 		return stepBuilderFactory.get("step1")
 			.<Person, Person> chunk(10)
 			.reader(reader())

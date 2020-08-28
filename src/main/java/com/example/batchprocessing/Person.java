@@ -15,34 +15,34 @@ public class Person {
 	}
 
 	public Person(String firstName, String lastName) {
-		log.info("teshi 名前インスタンス化");
+		log.info("teshi:Name instantiation");
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 
 	public void setFirstName(String firstName) {
-		log.info("teshi 名前をセット");
+		log.info("teshi:Name set");
 		this.firstName = firstName;
 	}
 
 	public String getFirstName() {
-		log.info("teshi 名前データ取得");
+		log.info("teshi:Get first name date");
 		return firstName;
 	}
 
 	public String getLastName() {
-		log.info("teshi 苗字データ取得");
+		log.info("teshi:Get last name date");
 		return lastName;
 	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-		log.info("teshi 苗字をセット");
+		log.info("teshi:Last name set");
 	}
 
 	@Override
 	public String toString() {
-		log.info("teshi 名前と苗字を表示");
+		log.info("teshi:Show last name and first name");
 		return "firstName: " + firstName + ", lastName: " + lastName;
 	}
 
