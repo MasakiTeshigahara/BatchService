@@ -8,7 +8,7 @@ public class Person {
 	private String lastName;
 	private String firstName;
 
-	private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
+	private static final Logger log = LoggerFactory.getLogger(Person.class);
 
 
 	public Person() {
@@ -21,7 +21,7 @@ public class Person {
 	}
 
 	public void setFirstName(String firstName) {
-		log.info("teshi:Name set");
+		log.info("teshi:Set Name");
 		this.firstName = firstName;
 	}
 
@@ -37,7 +37,7 @@ public class Person {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-		log.info("teshi:Last name set");
+		log.info("teshi:Set Last name");
 	}
 
 	@Override

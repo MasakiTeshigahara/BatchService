@@ -27,7 +27,7 @@ import org.springframework.core.io.ClassPathResource;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-	private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
+	private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
 
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
@@ -67,7 +67,7 @@ public class BatchConfiguration {
 
 	@Bean
 	public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
-		log.info("teshi JOBスタート");
+		log.info("teshi:JOB start");
 		return jobBuilderFactory.get("importUserJob")
 			.incrementer(new RunIdIncrementer())
 			.listener(listener)

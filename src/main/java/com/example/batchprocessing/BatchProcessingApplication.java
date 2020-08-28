@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BatchProcessingApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
+	private static final Logger log = LoggerFactory.getLogger(BatchProcessingApplication.class);
 
 
 	public static void main(String[] args) throws Exception {
