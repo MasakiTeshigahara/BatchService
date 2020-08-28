@@ -15,13 +15,13 @@ public class Person {
 	}
 
 	public Person(String firstName, String lastName) {
-		log.info("teshi:Name instantiation");
+		log.info("teshi:Instantiate firstName" +  firstName  + "Instantiate lastName" +  lastName );
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 
 	public void setFirstName(String firstName) {
-		log.info("teshi:Set Name");
+		log.info("teshi:Set Name " + firstName);
 		this.firstName = firstName;
 	}
 
@@ -37,7 +37,7 @@ public class Person {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-		log.info("teshi:Set Last name");
+		log.info("teshi:Set Last name " + lastName);
 	}
 
 	@Override

@@ -13,7 +13,6 @@ public class BatchProcessingApplication {
 
 	public static void main(String[] args) throws Exception {
 		System.exit(SpringApplication.exit(SpringApplication.run(BatchProcessingApplication.class, args)));
-		log.info("teshi:Packaged in a JAR file" +
-				"");
+		log.info("teshi:Packaged in a JAR file" );
 	}
 }
